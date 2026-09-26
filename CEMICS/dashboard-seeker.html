@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard | CEMICS</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header class="navbar" style="height:auto; padding:14px 0;">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <img src="assests/CEMICS-Logo.png" alt="CEMICS Logo" style="width:150px;">
+        </a>
+    </div>
+</header>
+
+<div class="app-shell">
+
+    <aside class="app-sidebar">
+        <p class="sidebar-role">Community Member</p>
+
+        <button class="sidebar-link is-active" data-view="view-applications">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="3.5" y="4" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
+            My Referrals
+        </button>
+        <button class="sidebar-link" data-view="view-interviews">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M3.5 10h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Interviews
+        </button>
+        <button class="sidebar-link" data-view="view-profile">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-6 8-6s8 2.1 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            My Profile &amp; CV
+        </button>
+
+        <div class="sidebar-foot">
+            <button class="sidebar-link" id="logoutBtn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 17l-5-5 5-5M5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Log out
+            </button>
+        </div>
+    </aside>
+
+    <div style="flex:1; display:flex; flex-direction:column;">
+
+        <div class="app-topbar">
+            <div>
+                <div class="topbar-title">Welcome back<span id="topbarFirstName"></span></div>
+                <div class="topbar-sub">Keep your profile and documents up to date — your councillor uses these to match you to suitable opportunities.</div>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell-wrap">
+                    <button class="bell-btn" id="bellBtn">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        <span class="bell-dot" id="bellDot"></span>
+                    </button>
+                    <div class="notif-panel" id="notifPanel">
+                        <div class="notif-panel-head"><strong>Notifications</strong><button id="notifMarkAll">Mark all read</button></div>
+                        <div id="notifList"></div>
+                    </div>
+                </div>
+                <button class="user-chip">
+                    <span class="user-avatar" id="userAvatar"></span>
+                    <span class="user-chip-name" id="userChipName"></span>
+                </button>
+            </div>
+        </div>
+
+        <main class="app-main">
+
+            <!-- MY REFERRALS -->
+            <section class="view is-active" id="view-applications">
+                <div class="view-head">
+                    <div>
+                        <h1>My Referrals</h1>
+                        <p>Your councillor reviews the community register and forwards suitable community members to employers &mdash; track the status of every referral here.</p>
+                    </div>
+                </div>
+                <div id="applicationsList"></div>
+            </section>
+
+            <!-- INTERVIEWS -->
+            <section class="view" id="view-interviews">
+                <div class="view-head">
+                    <div>
+                        <h1>Interviews</h1>
+                        <p>Upcoming and past interviews scheduled by employers.</p>
+                    </div>
+                </div>
+                <div id="interviewsList"></div>
+            </section>
+
+            <!-- PROFILE -->
+            <section class="view" id="view-profile">
+                <div class="view-head">
+                    <div>
+                        <h1>My Profile &amp; CV</h1>
+                        <p>Keep your CV and documents current so your councillor can put you forward for suitable roles.</p>
+                    </div>
+                </div>
+
+                <div class="card dash-form">
+                    <h3 style="margin-bottom:14px;">Curriculum Vitae</h3>
+                    <p id="cvStatus" style="font-size:13.5px; color:#42516a; margin-bottom:14px;">No CV uploaded yet.</p>
+                    <div class="field">
+                        <label for="cvFile">Upload / replace CV (PDF, Word or image)</label>
+                        <input type="file" id="cvFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="uploadCvBtn" type="button">Upload CV</button>
+                </div>
+
+                <div class="card dash-form">
+                    <h3 style="margin-bottom:14px;">Supporting Documents</h3>
+                    <p style="font-size:13.5px; color:#42516a; margin-bottom:14px;">ID copy, certificates, references, etc.</p>
+                    <div class="field">
+                        <label for="docFiles">Upload documents (up to 5 at a time)</label>
+                        <input type="file" id="docFiles" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" multiple>
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="uploadDocsBtn" type="button">Upload Documents</button>
+                    <div class="doc-list" id="docList"></div>
+                </div>
+
+                <div class="card dash-form">
+                    <h3 style="margin-bottom:14px;">Skills &amp; Interests</h3>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="qualification">Highest qualification</label>
+                            <select id="qualification">
+                                <option value="">Select one</option>
+                                <option>Grade 10</option>
+                                <option>Grade 12 / Matric</option>
+                                <option>Certificate</option>
+                                <option>Diploma</option>
+                                <option>Bachelor's degree</option>
+                                <option>Honours degree</option>
+                                <option>Postgraduate degree</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="fieldOfInterest">Field of interest</label>
+                            <input type="text" id="fieldOfInterest" placeholder="e.g. Construction, IT, Admin">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="skillsText">Skills &amp; experience</label>
+                        <textarea id="skillsText" rows="3" placeholder="Brief summary of skills, trades or past work"></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="saveProfileBtn" type="button">Save Profile</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+<script src="dashboard-seeker.js"></script>
+</body>
+</html>

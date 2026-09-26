@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Administrator | CEMICS</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="dashboard-admin.css">
+</head>
+<body>
+
+<header class="navbar" style="height:auto; padding:14px 0;">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <img src="assests/CEMICS-Logo.png" alt="CEMICS Logo" style="width:150px;">
+        </a>
+    </div>
+</header>
+
+<div class="app-shell">
+
+    <aside class="app-sidebar">
+        <p class="sidebar-role">System Administrator</p>
+
+        <button class="sidebar-link is-active" data-view="view-overview">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            Dashboard
+        </button>
+
+        <p class="sidebar-group">Account Management</p>
+        <button class="sidebar-link" data-view="view-users" data-role-filter="">All Users</button>
+        <button class="sidebar-link" data-view="view-users" data-role-filter="seeker">Community Members</button>
+        <button class="sidebar-link" data-view="view-users" data-role-filter="employer">Employers</button>
+        <button class="sidebar-link" data-view="view-users" data-role-filter="councillor">Counselors</button>
+        <button class="sidebar-link" data-view="view-users" data-role-filter="actor">Actors</button>
+
+        <p class="sidebar-group">Job Management</p>
+        <button class="sidebar-link" data-view="view-jobs">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="8" width="17" height="12" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.8"/></svg>
+            Monitor Job Posts
+        </button>
+
+        <p class="sidebar-group">Insights</p>
+        <button class="sidebar-link" data-view="view-reports">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Reports
+        </button>
+        <button class="sidebar-link" data-view="view-security">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Security
+        </button>
+
+        <p class="sidebar-group">System</p>
+        <button class="sidebar-link" data-view="view-settings">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 13a7.7 7.7 0 0 0 0-2l2-1.5-2-3.5-2.4 1a7.7 7.7 0 0 0-1.7-1L15 3h-6l-.3 2.5a7.7 7.7 0 0 0-1.7 1l-2.4-1-2 3.5L4.6 11a7.7 7.7 0 0 0 0 2l-2 1.5 2 3.5 2.4-1a7.7 7.7 0 0 0 1.7 1L9 21h6l.3-2.5a7.7 7.7 0 0 0 1.7-1l2.4 1 2-3.5-2-1.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            System Settings
+        </button>
+        <button class="sidebar-link" data-view="view-profile">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-6 8-6s8 2.1 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Administrator Profile
+        </button>
+
+        <div class="sidebar-foot">
+            <button class="sidebar-link" id="logoutBtn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 17l-5-5 5-5M5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Log out
+            </button>
+        </div>
+    </aside>
+
+    <div style="flex:1; display:flex; flex-direction:column;">
+
+        <div class="app-topbar">
+            <div>
+                <div class="topbar-title" id="topbarTitle">System Administrator Dashboard</div>
+                <div class="topbar-sub">Full oversight of users, jobs, security and system health.</div>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell-wrap">
+                    <button class="bell-btn" id="bellBtn">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        <span class="bell-dot" id="bellDot"></span>
+                    </button>
+                    <div class="notif-panel" id="notifPanel">
+                        <div class="notif-panel-head"><strong>Notifications</strong><button id="notifMarkAll">Mark all read</button></div>
+                        <div id="notifList"></div>
+                    </div>
+                </div>
+                <button class="user-chip">
+                    <span class="user-avatar" id="userAvatar"></span>
+                    <span class="user-chip-name" id="userChipName"></span>
+                </button>
+            </div>
+        </div>
+
+        <main class="app-main">
+
+            <!-- OVERVIEW -->
+            <section class="view is-active" id="view-overview">
+                <div class="view-head"><div><h1>System Overview</h1><p>A live snapshot of the whole CEMICS platform.</p></div></div>
+                <div class="stat-grid" id="overviewStats"></div>
+                <div class="card">
+                    <h3 style="margin-bottom:14px;">Accounts by role</h3>
+                    <div id="overviewRoleBars"></div>
+                </div>
+            </section>
+
+            <!-- ACCOUNT MANAGEMENT -->
+            <section class="view" id="view-users">
+                <div class="view-head">
+                    <div><h1 id="usersTitle">All Users</h1><p>Manage accounts, suspend access, or remove users from the platform.</p></div>
+                    <button class="btn btn-primary btn-sm" id="addUserBtn">+ Add Account</button>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="userSearch" placeholder="Search by name or email">
+                </div>
+                <div id="usersList"></div>
+            </section>
+
+            <!-- JOB MANAGEMENT -->
+            <section class="view" id="view-jobs">
+                <div class="view-head">
+                    <div><h1>Monitor Job Posts</h1><p>Every vacancy posted on CEMICS, across all employers and councillors.</p></div>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="jobSearch" placeholder="Search title or description">
+                    <select id="jobStatusFilter">
+                        <option value="">All statuses</option>
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                </div>
+                <div id="jobsList"></div>
+            </section>
+
+            <!-- REPORTS -->
+            <section class="view" id="view-reports">
+                <div class="view-head"><div><h1>Reports</h1><p>Aggregate activity across the platform.</p></div></div>
+                <div class="stat-grid" id="reportStats"></div>
+                <div class="card"><h3 style="margin-bottom:14px;">Jobs by industry</h3><div id="reportJobsByIndustry"></div></div>
+                <div class="card"><h3 style="margin-bottom:14px;">Applications by status</h3><div id="reportAppsByStatus"></div></div>
+                <div class="card"><h3 style="margin-bottom:14px;">Sign-ups by month</h3><div id="reportSignups"></div></div>
+            </section>
+
+            <!-- SECURITY -->
+            <section class="view" id="view-security">
+                <div class="view-head"><div><h1>Security</h1><p>Login activity, failed attempts and account status.</p></div></div>
+                <div class="stat-grid" id="securityStats"></div>
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                        <h3>Recent login activity</h3>
+                        <label style="font-size:13px; color:#42516a; display:flex; gap:6px; align-items:center;">
+                            <input type="checkbox" id="onlyFailedToggle"> Show failed attempts only
+                        </label>
+                    </div>
+                    <div id="loginLogsList"></div>
+                </div>
+            </section>
+
+            <!-- SYSTEM SETTINGS -->
+            <section class="view" id="view-settings">
+                <div class="view-head"><div><h1>System Settings</h1><p>Platform-wide configuration.</p></div></div>
+                <div class="card dash-form">
+                    <div class="field">
+                        <label for="setSiteName">Site name</label>
+                        <input type="text" id="setSiteName">
+                    </div>
+                    <div class="field">
+                        <label for="setSupportEmail">Support email</label>
+                        <input type="email" id="setSupportEmail">
+                    </div>
+                    <div class="field" style="display:flex; align-items:center; gap:10px;">
+                        <input type="checkbox" id="setAllowRegistrations" style="width:auto;">
+                        <label for="setAllowRegistrations" style="margin:0;">Allow new public registrations</label>
+                    </div>
+                    <div class="field" style="display:flex; align-items:center; gap:10px;">
+                        <input type="checkbox" id="setMaintenanceMode" style="width:auto;">
+                        <label for="setMaintenanceMode" style="margin:0;">Maintenance mode</label>
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="saveSettingsBtn" type="button">Save Settings</button>
+                </div>
+            </section>
+
+            <!-- ADMIN PROFILE -->
+            <section class="view" id="view-profile">
+                <div class="view-head"><div><h1>Administrator Profile</h1><p>Your own CEMICS account details.</p></div></div>
+                <div class="card dash-form">
+                    <div class="grid two">
+                        <div class="field"><label for="pFirstName">First name</label><input type="text" id="pFirstName"></div>
+                        <div class="field"><label for="pLastName">Last name</label><input type="text" id="pLastName"></div>
+                    </div>
+                    <div class="field"><label for="pEmail">Email (read only)</label><input type="email" id="pEmail" disabled></div>
+                    <div class="field"><label for="pPhone">Phone</label><input type="text" id="pPhone"></div>
+                    <button class="btn btn-primary btn-sm" id="saveAdminProfileBtn" type="button">Save Profile</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</div>
+
+<!-- ADD / EDIT USER MODAL -->
+<div class="modal-backdrop" id="userModal">
+    <div class="modal-box">
+        <button class="modal-close" data-close-modal>&times;</button>
+        <h2 id="userModalTitle">Add Account</h2>
+        <p class="modal-sub">Create an account directly &mdash; useful for counselors or partner organisations.</p>
+        <div class="field">
+            <label for="umRole">Role</label>
+            <select id="umRole">
+                <option value="seeker">Community Member</option>
+                <option value="employer">Employer</option>
+                <option value="councillor">Counselor</option>
+                <option value="actor">Actor / Partner Org</option>
+                <option value="admin">System Administrator</option>
+            </select>
+        </div>
+        <div class="grid two">
+            <div class="field"><label for="umFirstName">First name</label><input type="text" id="umFirstName"></div>
+            <div class="field"><label for="umLastName">Last name</label><input type="text" id="umLastName"></div>
+        </div>
+        <div class="field"><label for="umEmail">Email</label><input type="email" id="umEmail"></div>
+        <div class="field" id="umPasswordField"><label for="umPassword">Temporary password</label><input type="text" id="umPassword"></div>
+        <div class="modal-actions">
+            <button class="btn btn-outline btn-sm" data-close-modal type="button">Cancel</button>
+            <button class="btn btn-primary btn-sm" id="confirmUserBtn" type="button">Create Account</button>
+        </div>
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+<script src="dashboard-admin.js"></script>
+</body>
+</html>

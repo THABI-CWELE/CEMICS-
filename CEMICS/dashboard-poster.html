@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard | CEMICS</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header class="navbar" style="height:auto; padding:14px 0;">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <img src="assests/CEMICS-Logo.png" alt="CEMICS Logo" style="width:150px;">
+        </a>
+    </div>
+</header>
+
+<div class="app-shell">
+
+    <aside class="app-sidebar">
+        <p class="sidebar-role" id="sidebarRole">Employer</p>
+
+        <button class="sidebar-link is-active" data-view="view-vacancies">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="8" width="17" height="12" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.8"/></svg>
+            My Vacancies
+        </button>
+        <button class="sidebar-link" data-view="view-post">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            Post a Vacancy
+        </button>
+        <button class="sidebar-link" data-view="view-allvacancies" id="navAllVacancies" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="8" width="17" height="12" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.8"/></svg>
+            All Vacancies
+        </button>
+        <button class="sidebar-link" data-view="view-register" id="navRegister" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="7" r="2.4" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 14.3c2.6.4 4.5 2.3 4.5 5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            Community Register
+        </button>
+
+        <div class="sidebar-foot">
+            <button class="sidebar-link" id="logoutBtn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 17l-5-5 5-5M5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Log out
+            </button>
+        </div>
+    </aside>
+
+    <div style="flex:1; display:flex; flex-direction:column;">
+
+        <div class="app-topbar">
+            <div>
+                <div class="topbar-title" id="topbarTitle">Dashboard</div>
+                <div class="topbar-sub">Post roles, review applicants and manage interviews.</div>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell-wrap">
+                    <button class="bell-btn" id="bellBtn">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        <span class="bell-dot" id="bellDot"></span>
+                    </button>
+                    <div class="notif-panel" id="notifPanel">
+                        <div class="notif-panel-head"><strong>Notifications</strong><button id="notifMarkAll">Mark all read</button></div>
+                        <div id="notifList"></div>
+                    </div>
+                </div>
+                <button class="user-chip">
+                    <span class="user-avatar" id="userAvatar"></span>
+                    <span class="user-chip-name" id="userChipName"></span>
+                </button>
+            </div>
+        </div>
+
+        <main class="app-main">
+
+            <!-- MY VACANCIES -->
+            <section class="view is-active" id="view-vacancies">
+                <div class="view-head">
+                    <div>
+                        <h1>My Vacancies</h1>
+                        <p>Everything you've posted, open or closed.</p>
+                    </div>
+                </div>
+
+                <div class="stat-grid" id="statGrid"></div>
+                <div id="vacancyList"></div>
+            </section>
+
+            <!-- POST / EDIT VACANCY -->
+            <section class="view" id="view-post">
+                <div class="view-head">
+                    <div>
+                        <h1 id="postFormTitle">Post a Vacancy</h1>
+                        <p id="postFormSub">Your vacancy goes to your councillor, who will match it against the community register and forward suitable candidates to you.</p>
+                    </div>
+                </div>
+
+                <div class="card dash-form">
+                    <div class="field">
+                        <label for="vTitle">Job title</label>
+                        <input type="text" id="vTitle" placeholder="e.g. Warehouse Assistant">
+                    </div>
+                    <div class="field">
+                        <label for="vDescription">Description</label>
+                        <textarea id="vDescription" rows="3" placeholder="What the role involves"></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="vRequirements">Requirements</label>
+                        <textarea id="vRequirements" rows="3" placeholder="Experience, certifications, physical requirements, etc."></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="vSkills">Key skills (comma-separated)</label>
+                        <input type="text" id="vSkills" placeholder="e.g. forklift license, stock control, teamwork">
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="vIndustry">Industry / sector</label>
+                            <select id="vIndustry">
+                                <option value="">Select one</option>
+                                <option>Construction</option>
+                                <option>Retail</option>
+                                <option>Hospitality</option>
+                                <option>Manufacturing</option>
+                                <option>Agriculture</option>
+                                <option>Healthcare</option>
+                                <option>Information Technology</option>
+                                <option>Education</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="vEmploymentType">Employment type</label>
+                            <select id="vEmploymentType">
+                                <option>Full-time</option>
+                                <option>Part-time</option>
+                                <option>Contract</option>
+                                <option>Temporary</option>
+                                <option>Internship</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="vLocation">Location</label>
+                            <input type="text" id="vLocation" placeholder="e.g. Richards Bay">
+                        </div>
+                        <div class="field">
+                            <label for="vMinQualification">Minimum qualification</label>
+                            <select id="vMinQualification">
+                                <option value="">Not specified</option>
+                                <option>Grade 10</option>
+                                <option>Grade 12 / Matric</option>
+                                <option>Certificate</option>
+                                <option>Diploma</option>
+                                <option>Bachelor's degree</option>
+                                <option>Honours degree</option>
+                                <option>Postgraduate degree</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="vSalary">Salary range (optional)</label>
+                            <input type="text" id="vSalary" placeholder="e.g. R6,000 - R8,000 / month">
+                        </div>
+                        <div class="field">
+                            <label for="vClosingDate">Closing date</label>
+                            <input type="date" id="vClosingDate">
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn btn-primary" id="saveVacancyBtn" type="button">Post Vacancy</button>
+                        <button class="btn btn-outline" id="cancelEditBtn" type="button" style="display:none;">Cancel edit</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- APPLICATIONS FOR A VACANCY -->
+            <section class="view" id="view-applications">
+                <div class="view-head">
+                    <div>
+                        <button class="link" id="backToVacancies" style="border:none; background:none; cursor:pointer; margin-bottom:6px;">&larr; Back to My Vacancies</button>
+                        <h1 id="applicationsVacancyTitle">Applications</h1>
+                        <p>Ranked by CEMICS' intelligent screening score. Highest matches appear first.</p>
+                    </div>
+                </div>
+                <div id="applicantsList"></div>
+            </section>
+
+            <!-- ALL VACANCIES (councillor only) — org-wide, so the councillor
+                 can match candidates against every employer's open roles. -->
+            <section class="view" id="view-allvacancies">
+                <div class="view-head">
+                    <div>
+                        <h1>All Vacancies</h1>
+                        <p>Every open role posted by an employer or councillor. Find suitable community members and refer them.</p>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="allVacSearch" placeholder="Search title, description or location">
+                </div>
+                <div id="allVacanciesList"></div>
+            </section>
+
+            <!-- COMMUNITY REGISTER (councillor only) — every registered
+                 community member, so the councillor can see who's on the
+                 system and who might suit a given vacancy. -->
+            <section class="view" id="view-register">
+                <div class="view-head">
+                    <div>
+                        <h1>Community Register</h1>
+                        <p>Every registered community member and their profile.</p>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="registerSearch" placeholder="Search name, email or skills">
+                    <select id="registerQualification">
+                        <option value="">Any qualification</option>
+                        <option>Grade 10</option>
+                        <option>Grade 12 / Matric</option>
+                        <option>Certificate</option>
+                        <option>Diploma</option>
+                        <option>Bachelor's degree</option>
+                        <option>Honours degree</option>
+                        <option>Postgraduate degree</option>
+                    </select>
+                </div>
+                <div id="registerList"></div>
+            </section>
+
+        </main>
+    </div>
+</div>
+
+<!-- SCHEDULE INTERVIEW MODAL -->
+<div class="modal-backdrop" id="interviewModal">
+    <div class="modal-box">
+        <button class="modal-close" data-close-modal>&times;</button>
+        <h2>Schedule Interview</h2>
+        <p class="modal-sub">The candidate will be notified automatically.</p>
+        <div class="field">
+            <label for="interviewDate">Date &amp; time</label>
+            <input type="datetime-local" id="interviewDate">
+        </div>
+        <div class="field">
+            <label for="interviewMode">Mode</label>
+            <select id="interviewMode">
+                <option>In-person</option>
+                <option>Phone</option>
+                <option>Video call</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="interviewLocation">Location / link</label>
+            <input type="text" id="interviewLocation" placeholder="e.g. Civic Centre, Room 4 or a video call link">
+        </div>
+        <div class="field">
+            <label for="interviewNotes">Notes (optional)</label>
+            <textarea id="interviewNotes" rows="2"></textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-outline btn-sm" data-close-modal type="button">Cancel</button>
+            <button class="btn btn-primary btn-sm" id="confirmInterviewBtn" type="button">Schedule</button>
+        </div>
+    </div>
+</div>
+
+<!-- SUGGESTED CANDIDATES / REFER MODAL (councillor only) -->
+<div class="modal-backdrop" id="suggestModal">
+    <div class="modal-box" style="max-width:640px;">
+        <button class="modal-close" data-close-modal>&times;</button>
+        <h2 id="suggestModalTitle">Suggested Candidates</h2>
+        <p class="modal-sub">Ranked by fit against this vacancy. Refer a candidate to forward them to the employer.</p>
+        <div id="suggestList"></div>
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+<script src="dashboard-poster.js"></script>
+</body>
+</html>

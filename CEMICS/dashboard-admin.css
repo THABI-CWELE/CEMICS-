@@ -1,0 +1,36 @@
+.sidebar-group {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #a7b0bc;
+    font-weight: 700;
+    padding: 16px 12px 4px;
+}
+
+.bar-row { margin-bottom: 14px; }
+.bar-row-label {
+    display: flex; justify-content: space-between; font-size: 13px; color: #42516a; margin-bottom: 6px;
+}
+.bar-row-track { height: 9px; background: #eef1f4; border-radius: 6px; overflow: hidden; }
+.bar-row-fill { height: 100%; background: #075792; border-radius: 6px; }
+.bar-row-fill.green { background: #239b39; }
+.bar-row-fill.orange { background: #f27a0a; }
+
+.log-row {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid #f0f2f5; font-size: 13px; color: #42516a; flex-wrap: wrap;
+}
+.log-row:last-child { border-bottom: none; }
+.log-row .log-email { font-weight: 600; color: #09254b; }
+.log-row .log-time { color: #8b94a0; font-size: 12px; }
+
+.user-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 16px 18px; border: 1px solid #e5e9ee; border-radius: 14px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.user-row .u-name { font-weight: 700; color: #09254b; font-size: 14.5px; }
+.user-row .u-meta { font-size: 12.5px; color: #6f8298; margin-top: 3px; }
+.user-row .u-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.badge-suspended { background: #fdeceb; color: #a3271c; }
+.badge-active { background: #e5f6e8; color: #21963b; }
+.badge-role { background: #eef1f4; color: #42516a; }

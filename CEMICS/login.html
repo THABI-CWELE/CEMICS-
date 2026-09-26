@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | CEMICS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <img src="assests/CEMICS-Logo.png" alt="CEMICS Logo">
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html#about">About Us</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a href="register.html" class="nav-btn register-btn">
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="1.8"/><path d="M2 21c0-3.9 3.1-6 7-6s7 2.1 7 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M19 8v6M16 11h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Register
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="auth-main">
+
+    <div class="auth-side">
+        <div>
+            <h2>Good to see you again.</h2>
+            <p>Log in to reach the opportunities, candidates and community tools waiting for you on CEMICS.</p>
+        </div>
+
+        <ul class="auth-side-list">
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-6 8-6s8 2.1 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Community members pick up where they left off
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><rect x="3.5" y="8" width="17" height="12" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.8"/></svg>
+                Employers see their candidate pipeline
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M4 21V10l8-6 8 6v11" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8"/></svg>
+                Councillors keep an eye on their ward
+            </li>
+        </ul>
+
+        <p class="auth-side-foot">A stronger community starts with opportunity.</p>
+    </div>
+
+    <div class="auth-form-panel">
+        <p class="auth-eyebrow">Log in</p>
+        <h1>Welcome back</h1>
+        <p class="auth-sub">Enter your details to access your CEMICS account.</p>
+
+        <div class="form-alert" id="formAlert" role="alert"></div>
+
+        <form id="loginForm" novalidate>
+            <div class="field">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                <span class="field-error-msg" data-for="email"></span>
+            </div>
+
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" minlength="8" required>
+                <span class="field-error-msg" data-for="password"></span>
+            </div>
+
+            <div class="field-row">
+                <label class="checkbox-row">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span>Keep me logged in</span>
+                </label>
+                <a href="#" class="link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </form>
+
+        <p class="form-footnote">Don't have an account? <a href="register.html" class="link">Create one</a></p>
+    </div>
+
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2026 CEMICS. All rights reserved.</p>
+    <p>Connect &bull; Empower &bull; Build &bull; Grow</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard | CEMICS</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header class="navbar" style="height:auto; padding:14px 0;">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <img src="assests/CEMICS-Logo.png" alt="CEMICS Logo" style="width:150px;">
+        </a>
+    </div>
+</header>
+
+<div class="app-shell">
+    <aside class="app-sidebar">
+        <p class="sidebar-role">Partner Organisation</p>
+        <button class="sidebar-link is-active" data-view="view-profile">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-6 8-6s8 2.1 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            My Profile
+        </button>
+        <div class="sidebar-foot">
+            <button class="sidebar-link" id="logoutBtn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 17l-5-5 5-5M5 12h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Log out
+            </button>
+        </div>
+    </aside>
+
+    <div style="flex:1; display:flex; flex-direction:column;">
+        <div class="app-topbar">
+            <div>
+                <div class="topbar-title">Partner Dashboard</div>
+                <div class="topbar-sub">Your CEMICS partner account.</div>
+            </div>
+            <div class="topbar-actions">
+                <div class="bell-wrap">
+                    <button class="bell-btn" id="bellBtn">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 18a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        <span class="bell-dot" id="bellDot"></span>
+                    </button>
+                    <div class="notif-panel" id="notifPanel">
+                        <div class="notif-panel-head"><strong>Notifications</strong><button id="notifMarkAll">Mark all read</button></div>
+                        <div id="notifList"></div>
+                    </div>
+                </div>
+                <button class="user-chip">
+                    <span class="user-avatar" id="userAvatar"></span>
+                    <span class="user-chip-name" id="userChipName"></span>
+                </button>
+            </div>
+        </div>
+
+        <main class="app-main">
+            <section class="view is-active" id="view-profile">
+                <div class="view-head">
+                    <div><h1>My Profile</h1><p>Your CEMICS partner organisation account, managed by the System Administrator.</p></div>
+                </div>
+                <div class="card dash-form" id="profileCard"></div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+<script>
+  const currentUser = requireRole("actor");
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!currentUser) return;
+    setupTopbarUser(currentUser);
+    initNotificationBell();
+    const p = currentUser.profile || {};
+    document.getElementById("profileCard").innerHTML = `
+      <p><strong>Name:</strong> ${escapeHtml(currentUser.firstName + " " + currentUser.lastName)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(currentUser.email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(currentUser.phone || "—")}</p>
+      <p><strong>Organisation:</strong> ${escapeHtml(p.organisationName || "—")}</p>
+      <p style="margin-top:14px; color:#8b94a0; font-size:13px;">To update these details, please contact your CEMICS System Administrator.</p>
+    `;
+  });
+</script>
+</body>
+</html>

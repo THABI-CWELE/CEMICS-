@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | CEMICS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <img src="assests/CEMICS-Logo.png" alt="CEMICS Logo">
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html#about">About Us</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a href="login.html" class="nav-btn login-btn">
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Login
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+<section class="auth-main">
+
+    <div class="auth-side">
+        <div>
+            <h2>Registration is how you get counted in.</h2>
+            <p>Every account here is a card in the same deck &mdash; a resident looking for work, a business with a role to fill, or a councillor connecting the two. Pick the card that's yours.</p>
+        </div>
+
+        <ul class="auth-side-list">
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-6 8-6s8 2.1 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Community Member &mdash; register and get matched to local opportunities
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><rect x="3.5" y="8" width="17" height="12" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.8"/></svg>
+                Employer &mdash; post roles and screen candidates
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" fill="none" class="icon-svg"><path d="M4 21V10l8-6 8 6v11" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8"/></svg>
+                Councillor &mdash; oversee and support your ward
+            </li>
+        </ul>
+
+        <p class="auth-side-foot">A stronger community starts with opportunity.</p>
+    </div>
+
+    <div class="auth-form-panel">
+        <p class="auth-eyebrow">Create account</p>
+        <h1>Join CEMICS</h1>
+        <p class="auth-sub">Choose your account type and fill in your details.</p>
+
+        <div class="role-select" role="tablist" aria-label="Account type">
+            <button class="role-badge role-seeker is-active" type="button" role="tab" aria-selected="true" data-role="seeker">
+                <span class="badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-3.9 3.6-6 8-6s8 2.1 8 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <span class="badge-text"><strong>Community Member</strong><small>Get matched to work</small></span>
+            </button>
+
+            <button class="role-badge role-employer" type="button" role="tab" aria-selected="false" data-role="employer">
+                <span class="badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="8" width="17" height="12" rx="1.4" stroke="currentColor" stroke-width="1.8"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.8"/></svg>
+                </span>
+                <span class="badge-text"><strong>Employer</strong><small>Hire talent</small></span>
+            </button>
+
+            <button class="role-badge role-councillor" type="button" role="tab" aria-selected="false" data-role="councillor">
+                <span class="badge-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V10l8-6 8 6v11" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.8"/></svg>
+                </span>
+                <span class="badge-text"><strong>Councillor</strong><small>Serve your ward</small></span>
+            </button>
+        </div>
+
+        <form id="registerForm" novalidate>
+
+            <!-- STEP 1: shared personal details -->
+            <section class="form-section" data-step="1">
+                <div class="section-head">
+                    <span class="section-eyebrow">01 &middot; Your details</span>
+                    <h2>Who you are</h2>
+                </div>
+
+                <div class="grid two">
+                    <div class="field">
+                        <label for="firstName">Name</label>
+                        <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
+                        <span class="field-error-msg" data-for="firstName"></span>
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last name</label>
+                        <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
+                        <span class="field-error-msg" data-for="lastName"></span>
+                    </div>
+                </div>
+
+                <div class="grid two">
+                    <div class="field">
+                        <label for="idNumber">ID number</label>
+                        <input type="text" id="idNumber" name="idNumber" inputmode="numeric" maxlength="13" placeholder="13-digit South African ID" required>
+                        <span class="field-hint">Used to confirm you're a unique, verified person.</span>
+                        <span class="field-error-msg" data-for="idNumber"></span>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" name="phone" inputmode="tel" placeholder="e.g. 082 123 4567" required>
+                        <span class="field-error-msg" data-for="phone"></span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                    <span class="field-error-msg" data-for="email"></span>
+                </div>
+
+                <div class="field">
+                    <label for="address">Residential address</label>
+                    <textarea id="address" name="address" rows="2" placeholder="Street, suburb, town, postal code" required></textarea>
+                    <span class="field-error-msg" data-for="address"></span>
+                </div>
+
+                <div class="grid two">
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password" minlength="8" required>
+                        <span class="field-hint">At least 8 characters, with a number.</span>
+                        <span class="field-error-msg" data-for="password"></span>
+                    </div>
+                    <div class="field">
+                        <label for="confirmPassword">Confirm password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required>
+                        <span class="field-error-msg" data-for="confirmPassword"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 2: role-specific details -->
+            <section class="form-section" data-step="2">
+                <div class="section-head">
+                    <span class="section-eyebrow">02 &middot; Role details</span>
+                    <h2 id="roleHeading">Community member profile</h2>
+                </div>
+
+                <div class="role-fields" id="fields-seeker">
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="dob">Date of birth</label>
+                            <input type="date" id="dob" name="dob">
+                            <span class="field-error-msg" data-for="dob"></span>
+                        </div>
+                        <div class="field">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="">Prefer not to say</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="qualification">Highest qualification</label>
+                            <select id="qualification" name="qualification">
+                                <option value="">Select one</option>
+                                <option>No formal qualification</option>
+                                <option>Grade 12 / Matric</option>
+                                <option>Certificate</option>
+                                <option>Diploma</option>
+                                <option>Bachelor's degree</option>
+                                <option>Honours degree</option>
+                                <option>Postgraduate degree</option>
+                            </select>
+                            <span class="field-error-msg" data-for="qualification"></span>
+                        </div>
+                        <div class="field">
+                            <label for="field">Field of interest</label>
+                            <input type="text" id="field" name="field" placeholder="e.g. Construction, IT, Admin">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="skills">Skills and experience</label>
+                        <textarea id="skills" name="skills" rows="2" placeholder="Brief summary of skills, trades or past work"></textarea>
+                    </div>
+                </div>
+
+                <div class="role-fields" id="fields-employer" hidden>
+                    <div class="field">
+                        <label for="companyName">Company name</label>
+                        <input type="text" id="companyName" name="companyName">
+                        <span class="field-error-msg" data-for="companyName"></span>
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="companyReg">Company registration number</label>
+                            <input type="text" id="companyReg" name="companyReg" placeholder="e.g. 2019/123456/07">
+                            <span class="field-error-msg" data-for="companyReg"></span>
+                        </div>
+                        <div class="field">
+                            <label for="industry">Industry / sector</label>
+                            <select id="industry" name="industry">
+                                <option value="">Select one</option>
+                                <option>Construction</option>
+                                <option>Retail</option>
+                                <option>Hospitality</option>
+                                <option>Manufacturing</option>
+                                <option>Agriculture</option>
+                                <option>Healthcare</option>
+                                <option>Information Technology</option>
+                                <option>Education</option>
+                                <option>Other</option>
+                            </select>
+                            <span class="field-error-msg" data-for="industry"></span>
+                        </div>
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="jobTitle">Your position at the company</label>
+                            <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g. HR Manager, Owner">
+                            <span class="field-error-msg" data-for="jobTitle"></span>
+                        </div>
+                        <div class="field">
+                            <label for="companySize">Company size</label>
+                            <select id="companySize" name="companySize">
+                                <option value="">Select one</option>
+                                <option>1&ndash;10 employees</option>
+                                <option>11&ndash;50 employees</option>
+                                <option>51&ndash;200 employees</option>
+                                <option>200+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="checkbox-row" style="margin-bottom: 14px;">
+                        <input type="checkbox" id="sameAddress" name="sameAddress">
+                        <span>Company address is the same as my residential address</span>
+                    </label>
+                    <div class="field" id="companyAddressField">
+                        <label for="companyAddress">Company address</label>
+                        <textarea id="companyAddress" name="companyAddress" rows="2" placeholder="Street, suburb, town, postal code"></textarea>
+                        <span class="field-error-msg" data-for="companyAddress"></span>
+                    </div>
+                </div>
+
+                <div class="role-fields" id="fields-councillor" hidden>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="municipality">Municipality</label>
+                            <input type="text" id="municipality" name="municipality" placeholder="e.g. uMhlathuze Local Municipality">
+                            <span class="field-error-msg" data-for="municipality"></span>
+                        </div>
+                        <div class="field">
+                            <label for="municipalOffice">Municipal office</label>
+                            <input type="text" id="municipalOffice" name="municipalOffice" placeholder="e.g. Richards Bay Civic Centre">
+                            <span class="field-error-msg" data-for="municipalOffice"></span>
+                        </div>
+                    </div>
+                    <div class="grid two">
+                        <div class="field">
+                            <label for="wardNumber">Ward number</label>
+                            <input type="text" id="wardNumber" name="wardNumber" inputmode="numeric" placeholder="e.g. 12">
+                            <span class="field-error-msg" data-for="wardNumber"></span>
+                        </div>
+                        <div class="field">
+                            <label for="position">Position / title</label>
+                            <input type="text" id="position" name="position" placeholder="e.g. Ward Councillor">
+                            <span class="field-error-msg" data-for="position"></span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="staffId">Staff / employee number</label>
+                        <input type="text" id="staffId" name="staffId" placeholder="Municipal staff number, if issued">
+                    </div>
+                </div>
+            </section>
+
+            <div class="field" style="margin-top: 4px;">
+                <label class="checkbox-row">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <span>I confirm my details are accurate and I agree to the CEMICS terms of use and privacy policy.</span>
+                </label>
+                <span class="field-error-msg" data-for="terms"></span>
+            </div>
+
+            <button type="submit" class="btn btn-secondary btn-block" style="margin-top: 10px;">Create account</button>
+        </form>
+
+        <div class="success-block" id="successState" hidden>
+            <div class="success-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h1 style="text-align:center;">Account created</h1>
+            <p class="auth-sub" style="text-align:center;" id="successMessage">Your CEMICS account is ready. You can now log in and start using the platform.</p>
+            <a href="login.html" class="btn btn-primary btn-block">Go to login</a>
+        </div>
+
+        <p class="form-footnote">Already have an account? <a href="login.html" class="link">Log in</a></p>
+    </div>
+
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2026 CEMICS. All rights reserved.</p>
+    <p>Connect &bull; Empower &bull; Build &bull; Grow</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
