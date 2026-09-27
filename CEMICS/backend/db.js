@@ -137,5 +137,19 @@ const DEFAULT_SETTINGS = {
 };
 const insertSetting = db.prepare(`INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)`);
 Object.entries(DEFAULT_SETTINGS).forEach(([k, v]) => insertSetting.run(k, v));
-
+// AUTO CREATE DEFAULT ADMIN IF NOT EXISTS
+const bcrypt = require('bcryptjs');
+try {
+  const adminExists = db.prepare("SELECT * FROM users WHERE role = 'admin'").get();
+  if (!adminExists) {
+    const hashedPassword = bcrypt.hashSync('admin123', 10);
+    db.prepare(`
+      INSERT INTO users (firstname, lastname, email, password, role, phone)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `).run('Admin', 'User', 'admin@cemics.com', hashedPassword, 'admin', '0000000000');
+    console.log(' DEFAULT ADMIN CREATED: admin@cemics.com / admin123');
+  }
+} catch (e) {
+  console.log('Admin check error:', e.message);
+}
 module.exports = db;
