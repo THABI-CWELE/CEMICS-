@@ -147,12 +147,10 @@ try {
       INSERT INTO users (firstname, lastname, email, phone, password_hash, role)
       VALUES (?, ?, ?, ?, ?, ?)
     `).run('Admin', 'User', 'admin@cemics.com', '0000000000', hashedPassword, 'admin');
-    console.log('git add .
- DEFAULT ADMIN CREATED: admin@cemics.com / admin123');
+    console.log(' DEFAULT ADMIN CREATED: admin@cemics.com / admin123');
   } else {
     console.log('Admin already exists:', adminExists.email);
   }
 } catch (e) {
   console.log('Admin check error:', e.message);
-}
-module.exports = db;
+}ule.exports = db;

@@ -7,3 +7,6 @@ uploads/cv/*
 uploads/documents/*
 !uploads/cv/.gitkeep
 !uploads/documents/.gitkeep
+   backend/cemics.db
+   CEMICS/backend/cemics.db
+   *.db
