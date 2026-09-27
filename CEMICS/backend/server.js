@@ -29,7 +29,7 @@ app.use("/api/admin", adminRouter);
 app.use("/api/councillor", councillorRouter);
 
 app.get("/api/health", (req, res) => res.json({ ok: true, service: "CEMICS backend", time: new Date().toISOString() }));
-app.get("/create-admin",(req,res)=>{try{const b=require('bcryptjs');const db=require('./db');if(db.prepare("SELECT id FROM users WHERE email=?").get('admin@cemics.com')) return res.send('Admin exists - login now');const h=b.hashSync('admin123',10);db.prepare("INSERT INTO users (firstname,lastname,email,phone,password_hash,role) VALUES (?,?,?,?,?,?)").run('Admin','User','admin@cemics.com','0000000000',h,'admin');res.send('ADMIN CREATED - login with admin@cemics.com / admin123');}catch(e){res.send('Error: '+e.message);}});
+app.get("/create-admin",(req,res)=>{try{const b=require('bcryptjs');const c=require('crypto');const db=require('./db');if(db.prepare("SELECT id FROM users WHERE email=?").get('admin@cemics.com')) return res.send('Admin exists - login now');const h=b.hashSync('admin123',10);const id=c.randomUUID();db.prepare("INSERT INTO users (id,role,firstName,lastName,email,phone,passwordHash) VALUES (?,?,?,?,?,?,?)").run(id,'admin','Admin','User','admin@cemics.com','0000000000',h);res.send('ADMIN CREATED - login with admin@cemics.com / admin123');}catch(e){res.send('Error: '+e.message);}});
 // --- Uploaded files (CVs, supporting documents) ---
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
