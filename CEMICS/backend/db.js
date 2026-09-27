@@ -137,20 +137,12 @@ const DEFAULT_SETTINGS = {
 };
 const insertSetting = db.prepare(`INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)`);
 Object.entries(DEFAULT_SETTINGS).forEach(([k, v]) => insertSetting.run(k, v));
-// AUTO CREATE DEFAULT ADMIN IF NOT EXISTS
-const bcrypt = require('bcryptjs');
-try {
-  const adminExists = db.prepare("SELECT * FROM users WHERE email = ?").get('admin@cemics.com');
-  if (!adminExists) {
-    const hashedPassword = bcrypt.hashSync('admin123', 10);
-    db.prepare(`
-      INSERT INTO users (firstname, lastname, email, phone, password_hash, role)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `).run('Admin', 'User', 'admin@cemics.com', '0000000000', hashedPassword, 'admin');
-    console.log(' DEFAULT ADMIN CREATED: admin@cemics.com / admin123');
-  } else {
-    console.log('Admin already exists:', adminExists.email);
+try{
+  const b=require('bcryptjs');
+  if(!db.prepare("SELECT id FROM users WHERE email=?").get('admin@cemics.com')){
+    const h=b.hashSync('admin123',10);
+    db.prepare("INSERT INTO users (firstname,lastname,email,phone,password_hash,role) VALUES (?,?,?,?,?,?)").run('Admin','User','admin@cemics.com','0000000000',h,'admin');
+    console.log('ADMIN CREATED');
   }
-} catch (e) {
-  console.log('Admin check error:', e.message);
-}ule.exports = db;
+}catch(e){ console.log('Admin error:',e.message); }
+module.exports = db;
